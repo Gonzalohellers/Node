@@ -2,7 +2,6 @@ const http = require('http')
 const express = require('express');
 const app = express();
 const morgan=require('morgan');
-const page=require('fs');
 app.use(express.json());
 app.use(express.static('build'))
 app.use(morgan(':method :url :status :res[header] - :response-time ms'))
@@ -31,10 +30,10 @@ let notes = [
   }
 ]
 
-const index=page.readFileSync('dist\index.html');
+
 
 app.get('/', (request, response) => {
-  response.send(index);
+  response.send('<h1>Hello World!</h1>')
 })
 
 app.get('/api/notes', (request, response) => {
